@@ -27,8 +27,7 @@ func TestDeterminateImageType(t *testing.T) {
 		defer img.Close()
 
 		if VipsIsTypeSupported(file.expected) {
-			if DetermineImageType(buf) != file.expected {
-				t.Fatalf("Image type is not valid: %s != %s", file.name, ImageTypes[file.expected])
+			if DetermineImageType(buf) != file.expected {t.Fatalf("Image type is not valid: %s != %s", file.name, ImageTypes[file.expected])
 			}
 		}
 	}

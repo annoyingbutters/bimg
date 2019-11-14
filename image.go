@@ -172,6 +172,11 @@ func (i *Image) Convert(t ImageType) ([]byte, error) {
 	return i.Process(options)
 }
 
+func (i *Image) ConvertPage(t ImageType, page int, dpi float32) ([]byte, error) {
+	options := Options{Type: t, PageNum: page, DPI: dpi}
+	return i.Process(options)
+}
+
 // Colourspace performs a color space conversion bsaed on the given interpretation.
 func (i *Image) Colourspace(c Interpretation) ([]byte, error) {
 	options := Options{Interpretation: c}

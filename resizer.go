@@ -129,11 +129,16 @@ func resizer(buf []byte, o Options) ([]byte, error) {
 }
 
 func loadImage(buf []byte) (*C.VipsImage, ImageType, error) {
+	return loadImageWithOptions(buf, Options{})
+}
+
+func loadImageWithOptions(buf []byte, o Options) (*C.VipsImage, ImageType, error) {
+
 	if len(buf) == 0 {
 		return nil, JPEG, errors.New("Image buffer is empty")
 	}
 
-	image, imageType, err := vipsRead(buf)
+	image, imageType, err := vipsReadWithOptions(buf, o)
 	if err != nil {
 		return nil, JPEG, err
 	}
