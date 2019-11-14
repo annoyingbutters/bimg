@@ -312,7 +312,7 @@ func vipsReadWithOptions(buf []byte, o Options) (*C.VipsImage, ImageType, error)
 	length := C.size_t(len(buf))
 	imageBuf := unsafe.Pointer(&buf[0])
 
-	opts := vipsOptions{PageNum: C.int(o.PageNum)}
+	opts := vipsOptions{PageNum: C.int(o.PageNum), DPI:C.float(o.DPI)}
 	err := C.vips_init_image(imageBuf, length, C.int(imageType), &image, (*C.Options)(unsafe.Pointer(&opts)))
 	if err != 0 {
 		return nil, UNKNOWN, catchVipsError()

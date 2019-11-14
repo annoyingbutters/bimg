@@ -21,7 +21,7 @@ var (
 func resizer(buf []byte, o Options) ([]byte, error) {
 	defer C.vips_thread_shutdown()
 
-	image, imageType, err := loadImage(buf)
+	image, imageType, err := loadImageWithOptions(buf, o)
 	if err != nil {
 		return nil, err
 	}

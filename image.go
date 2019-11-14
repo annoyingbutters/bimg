@@ -173,7 +173,7 @@ func (i *Image) Convert(t ImageType) ([]byte, error) {
 }
 
 func (i *Image) ConvertPage(t ImageType, page int, dpi float32) ([]byte, error) {
-	options := Options{Type: t, PageNum: page, DPI: dpi}
+	options := Options{Type: t, PageNum: page, DPI: float32(dpi)}
 	return i.Process(options)
 }
 
